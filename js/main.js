@@ -1,22 +1,24 @@
 //Example fetch using pokemonapi.co
 document.querySelector('button').addEventListener('click', getFetch)
 
-
-const br = document.createElement('br')
 function getFetch(){
   // const choice = document.querySelector('input').value
   // console.log(choice)
-  const url = `https://v2.jokeapi.dev/joke/Programming`
+  const url = `https://catfact.ninja/fact?max_length=300`
 
   fetch(url)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
         console.log(data)
-        const br = document.createElement("br")
-        if(data.type === 'twopart'){
-          document.querySelector('h3').innerText = data.setup + data.delivery
-        }else
-        document.querySelector('h3').innerText = data.joke
+        // if(data.media_type === "image"){
+        //   document.querySelector('img').src = data.hdurl
+        // }else if(data.media_type === 'video'){
+        //   document.querySelector('iframe').src = data.url
+        // }else{
+        //   alert('Media Not Supported - Contact NASA IMMEDIATLY')
+        // }
+       
+        document.querySelector('h3').innerText = data.fact
       })
       .catch(err => {
           console.log(`error ${err}`)
